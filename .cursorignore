@@ -1,0 +1,12 @@
+/node_modules
+/dist
+
+/build
+/coverage
+
+nest-cli.json
+
+eslint.config.js
+.prettierrc
+
+/prisma/migrations/dev

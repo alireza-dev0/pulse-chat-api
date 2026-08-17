@@ -1,0 +1,79 @@
+آره، حق با توئه 😄
+اون قبلی برای Cursor زیادی طولانی بود و خودش می‌تونست باعث مصرف توکن بیشتر بشه.
+
+برای Cursor Rule بهتره **خیلی کوتاه، دستوری و بدون توضیحات اضافه** باشه. این نسخه به نظرم مناسبه:
+
+# Coding Rules
+
+* Keep the code simple. Avoid over-engineering.
+* Before coding, inspect the existing code and follow its patterns.
+* Reuse existing code, services, utilities, dependencies, guards, and decorators.
+* Do not install or suggest new packages unless the user explicitly allows it.
+* Do not introduce new architecture or patterns unless absolutely necessary.
+* Avoid unnecessary abstractions, factories, interfaces, base classes, repositories, use-cases, CQRS, or similar patterns.
+* Keep controllers thin and put business logic in services.
+* Use standard NestJS patterns: modules, controllers, services, DTOs, guards, pipes, and gateways.
+* Use TypeScript, but keeآره، حق با توئه 😄
+اون قبلی برای Cursor زیادی طولانی بود و خودش می‌تونست باعث مصرف توکن بیشتر بشه.
+
+برای Cursor Rule بهتره **خیلی کوتاه، دستوری و بدون توضیحات اضافه** باشه. این نسخه به نظرم مناسبه:
+
+# Coding Rules
+
+* We don't have to write test now.
+* Keep the code simple. Avoid over-engineering.
+* Before coding, inspect the existing code and follow its patterns.
+* Reuse existing code, services, utilities, dependencies, guards, and decorators.
+* Do not install or suggest new packages unless the user explicitly allows it.
+* Do not introduce new architecture or patterns unless absolutely necessary.
+* Avoid unnecessary abstractions, factories, interfaces, base classes, repositories, use-cases, CQRS, or similar patterns.
+* Keep controllers thin and put business logic in services.
+* Use standard NestJS patterns: modules, controllers, services, DTOs, guards, pipes, and gateways.
+* Use TypeScript, but keep types simple and readable. Avoid `any` when reasonably possible.
+* Use `class-validator` for DTO validation. Do not use another validation library.
+* All validation messages must be in Persian.
+* Reuse the existing authentication/JWT system. Do not create another auth system.
+* Reuse the existing database/ORM. Do not introduce another ORM.
+* Reuse the existing Redis setup. Do not introduce another Redis client or Redis abstraction without permission.
+* Keep WebSocket gateways simple. Gateway handles events and delegates business logic to services.
+* Use NestJS exceptions for errors. Do not create custom error systems for simple cases.
+* Do not log passwords, tokens, secrets, or sensitive data.
+* Do not modify unrelated files or refactor unrelated code.
+* Do not implement features that were not requested.
+* Do not make architectural decisions based on assumptions. Ask when an important decision is unclear.
+* After changes, check for TypeScript/lint errors using the project's existing setup.
+* Prefer the smallest change that solves the task.
+
+## Priority
+
+When choosing between solutions:
+
+1. Existing code > new code
+2. Simple > clever
+3. Small change > large refactor
+4. Existing dependency > new dependency
+5. Explicit requirement > assumption
+p types simple and readable. Avoid `any` when reasonably possible.
+* Use `class-validator` for DTO validation. Do not use another validation library.
+* All validation messages must be in Persian.
+* Reuse the existing authentication/JWT system. Do not create another auth system.
+* Reuse the existing database/ORM. Do not introduce another ORM.
+* Reuse the existing Redis setup. Do not introduce another Redis client or Redis abstraction without permission.
+* Keep WebSocket gateways simple. Gateway handles events and delegates business logic to services.
+* Use NestJS exceptions for errors. Do not create custom error systems for simple cases.
+* Do not log passwords, tokens, secrets, or sensitive data.
+* Do not modify unrelated files or refactor unrelated code.
+* Do not implement features that were not requested.
+* Do not make architectural decisions based on assumptions. Ask when an important decision is unclear.
+* After changes, check for TypeScript/lint errors using the project's existing setup.
+* Prefer the smallest change that solves the task.
+
+## Priority
+
+When choosing between solutions:
+
+1. Existing code > new code
+2. Simple > clever
+3. Small change > large refactor
+4. Existing dependency > new dependency
+5. Explicit requirement > assumption

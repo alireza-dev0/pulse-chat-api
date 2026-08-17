@@ -1,0 +1,14 @@
+services:
+    postgres:
+        image: postgres:17-alpine
+        environment:
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: chat
+        ports:
+            - 5432:5432
+    
+    redis:
+        image: redis:7-alpine
+        ports:
+            - 6379:6379
