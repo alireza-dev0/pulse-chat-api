@@ -7,17 +7,14 @@ import {
     WebSocketGateway,
     WebSocketServer,
 } from '@nestjs/websockets';
-import { WsAuthGuard } from 'app/common';
+import { WsAuthGuard, getSocketCorsOptions } from 'app/common';
 import { Server, Socket } from 'socket.io';
 import { RoomService } from './room.service';
 
 
 @UseGuards(WsAuthGuard)
 @WebSocketGateway({
-    cors: {
-        origin: 'http://localhost:3000',
-        credentials: true
-    }
+    cors: getSocketCorsOptions(),
 })
 export class RoomGateway implements OnGatewayDisconnect {
     constructor(
@@ -32,7 +29,8 @@ export class RoomGateway implements OnGatewayDisconnect {
     handleRoomCreated(room: Room) {
         this.server.emit('room_created', {
             id: room.id,
-            name: room.name
+            name: room.name,
+            ownerId: room.ownerId,
         });
     }
 
@@ -106,8 +104,6 @@ export class RoomGateway implements OnGatewayDisconnect {
     ) {
         const { roomId } = payload;
         const user = client.data.user as JwtPayload;
-
-        await this.roomService.leaveRoom(roomId, user.id);
 
         client.leave(roomId);
 

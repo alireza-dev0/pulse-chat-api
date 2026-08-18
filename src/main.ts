@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import cookieParser from 'cookie-parser';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import { corsOptions, getProductionCorsOptions } from './common';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -14,10 +15,7 @@ async function bootstrap() {
     app.use(cookieParser());
 
     if (process.env.NODE_ENV === 'development') {
-        app.enableCors({
-            origin: 'http://localhost:3000',
-            credentials: true,
-        });
+        app.enableCors(corsOptions);
 
         const config = new DocumentBuilder()
             .setTitle('Pulse Chat API')
@@ -27,6 +25,8 @@ async function bootstrap() {
 
         const document = SwaggerModule.createDocument(app, config);
         SwaggerModule.setup('docs/swagger', app, document);
+    } else {
+        app.enableCors(getProductionCorsOptions());
     }
 
     await app.listen(process.env.PORT ?? 3000);

@@ -122,11 +122,14 @@ export class RoomService {
             throw new NotFoundException('اتاقی که می خواهید حذف کنید یافت نشد');
         }
 
-        await this.database.room.delete({
-            where: {
-                id
-            }
-        });
+        await this.database.$transaction([
+            this.database.message.deleteMany({
+                where: { roomId: id },
+            }),
+            this.database.room.delete({
+                where: { id },
+            }),
+        ]);
 
         return room;
     }

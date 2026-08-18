@@ -6,6 +6,7 @@ import { SigninDto } from './DTOs/signin.dto';
 import { ApiOkResponse } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { User } from '@/src/common';
+import { getAuthCookieOptions } from '@/src/common/cookies';
 
 @Controller('auth')
 export class AuthController {
@@ -99,19 +100,16 @@ export class AuthController {
 
     private setCookies(res: ExpressResponse, tokens: { accessToken?: string, refreshToken?: string }): ExpressResponse {
         const { accessToken, refreshToken } = tokens;
+        const cookieOptions = getAuthCookieOptions();
 
         accessToken && res.cookie('access-token', accessToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            maxAge: 15 * 60 * 1000, // 5 minutes
-            sameSite: 'lax',
+            ...cookieOptions,
+            maxAge: 15 * 60 * 1000,
         });
 
         refreshToken && res.cookie('refresh-token', refreshToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-            sameSite: 'lax',
+            ...cookieOptions,
+            maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
         return res;
@@ -119,17 +117,10 @@ export class AuthController {
 
 
     private clearCookies(res: ExpressResponse): ExpressResponse {
-        res.clearCookie('access-token', {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
-        });
+        const cookieOptions = getAuthCookieOptions();
 
-        res.clearCookie('refresh-token', {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
-        });
+        res.clearCookie('access-token', cookieOptions);
+        res.clearCookie('refresh-token', cookieOptions);
 
         return res;
     }

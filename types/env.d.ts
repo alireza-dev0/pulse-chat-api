@@ -7,5 +7,6 @@ namespace NodeJS {
         REDIS_URL: string;
         JWT_SECRET: string;
         BCRYPT_SALT_ROUNDS: string;
+        CLIENT_URL: string;
     }
 }

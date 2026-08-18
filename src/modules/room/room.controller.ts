@@ -30,7 +30,8 @@ export class RoomController {
 
         return result.map((room) => ({
             id: room.id,
-            name: room.name
+            name: room.name,
+            ownerId: room.ownerId,
         }));
     }
 
@@ -51,7 +52,8 @@ export class RoomController {
 
         return {
             id: result.id,
-            name: result.name
+            name: result.name,
+            ownerId: result.ownerId,
         }
     }
 
