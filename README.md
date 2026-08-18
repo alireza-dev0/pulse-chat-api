@@ -2,7 +2,9 @@
 
 Real-time chat backend built with NestJS, PostgreSQL, Redis, and Socket.IO. Handles authentication via HTTP-only cookies, room management, live messaging, and member presence (online / offline / typing).
 
-Looking to build the frontend? See **[FRONTEND_GUIDE.md](./FRONTEND_GUIDE.md)** for REST + WebSocket integration details.
+**Frontend:** [pulse-chat-web](https://github.com/alireza-dev0/pulse-chat-web)
+
+For REST + WebSocket integration details, see **[FRONTEND_GUIDE.md](./FRONTEND_GUIDE.md)**.
 
 ---
 
@@ -43,8 +45,8 @@ Looking to build the frontend? See **[FRONTEND_GUIDE.md](./FRONTEND_GUIDE.md)** 
 ### 1. Clone and install
 
 ```bash
-git clone <repo-url>
-cd api
+git clone https://github.com/alireza-dev0/pulse-chat-api.git
+cd pulse-chat-api
 pnpm install
 ```
 
@@ -111,6 +113,7 @@ In development, Swagger is available at **[http://localhost:3000/docs/swagger](h
 | `BCRYPT_SALT_ROUNDS` | bcrypt salt rounds for passwords       |
 | `PORT`               | HTTP server port                       |
 | `NODE_ENV`           | `development`, `production`, or `test` |
+| `CLIENT_URL`         | Frontend origin (required in production for CORS) |
 
 ---
 
@@ -161,7 +164,7 @@ Socket.IO runs on the same host/port as the HTTP server. See **[FRONTEND_GUIDE.m
 
 ## Development Notes
 
-* **CORS** is enabled in development for `http://localhost:3000` with `credentials: true`. If your frontend runs on another origin (e.g. Vite on `5173`), update CORS in `src/main.ts` and the WebSocket gateway configs.
+* **CORS** — in development, all origins are allowed (`origin: true`). In production, HTTP and Socket.IO use `CLIENT_URL` with `credentials: true`.
 * **Validation errors** return Persian messages from `class-validator`.
 * **Swagger** is only mounted when `NODE_ENV === 'development'`.
 
