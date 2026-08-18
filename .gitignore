@@ -54,4 +54,7 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
-/src/generated/prisma
+
+# Prisma generated client + local dev migrations (not committed)
+/src/prisma/generated/
+/prisma/migrations/dev/
