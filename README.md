@@ -1,5 +1,9 @@
 # Pulse Chat API
 
+<p align="center">
+  <img src="./images/image.png" width="80%" alt="Pulse Chat" />
+</p>
+
 Real-time chat backend built with NestJS, PostgreSQL, Redis, and Socket.IO. Handles authentication via HTTP-only cookies, room management, live messaging, and member presence (online / offline / typing).
 
 **Frontend:** [pulse-chat-web](https://github.com/alireza-dev0/pulse-chat-web)
@@ -85,10 +89,10 @@ PORT=3000
 pnpm exec prisma migrate dev
 ```
 
-Or, if you prefer pushing the schema without migrations:
+and generate prisma client
 
 ```bash
-pnpm exec prisma db push
+pnpm exec prisma generate
 ```
 
 ### 5. Run
