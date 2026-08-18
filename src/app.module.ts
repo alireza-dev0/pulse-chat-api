@@ -21,7 +21,7 @@ import { ChatModule } from './modules/chat/chat.module';
             isGlobal: true,
             envFilePath:
                 process.env.NODE_ENV === 'production'
-                    ? '.env.production'
+                    ? '.env'
                     : '.env.development',
         }),
 

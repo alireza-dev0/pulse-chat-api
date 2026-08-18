@@ -1,0 +1,41 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile.prod
+
+        container_name: chat-app
+
+        restart: unless-stopped
+
+        env_file:
+            - .env
+
+        environment:
+            NODE_ENV: production
+
+        ports:
+            - '3000:3000'
+
+        depends_on:
+            - postgres
+            - redis
+
+    postgres:
+        image: postgres:17-alpine
+
+        container_name: chat-postgres
+
+        restart: unless-stopped
+
+        environment:
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: chat
+
+    redis:
+        image: redis:7-alpine
+
+        container_name: chat-redis
+
+        restart: unless-stopped

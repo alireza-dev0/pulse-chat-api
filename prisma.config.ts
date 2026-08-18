@@ -3,9 +3,13 @@
 import { config } from 'dotenv';
 import { defineConfig, env } from 'prisma/config';
 
-config({
-    path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development',
-});
+// NODE_ENV must come from the shell / Docker / compose environment.
+// It is not read from .env yet when this file is evaluated.
+config({ path: '.env.development' });
+
+if (process.env.NODE_ENV === 'production') {
+    config({ path: '.env', override: true });
+}
 
 export default defineConfig({
     schema: 'prisma/schema.prisma',
