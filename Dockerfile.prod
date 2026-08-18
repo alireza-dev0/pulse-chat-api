@@ -56,4 +56,4 @@ EXPOSE 3000
 
 ENTRYPOINT ["./docker/entrypoint.sh"]
 
-CMD ["node", "dist/main.js"]
+RUN pnpm start:prod

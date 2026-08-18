@@ -11,9 +11,9 @@ export function getProductionCorsOptions() {
 }
 
 export function getSocketCorsOptions() {
-    if (process.env.NODE_ENV === 'production') {
-        return getProductionCorsOptions();
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //     return getProductionCorsOptions();
+    // }
 
     return corsOptions;
 }
